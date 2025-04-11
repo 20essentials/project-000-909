@@ -1,0 +1,98 @@
+---
+import MapImage from "@/assets/images/map_image.webp"
+
+import LeafletMap from "@/components/LeafletMap.astro"
+import BubbleBackground from "@/components/BubbleBackground.astro"
+import WaveSeparator from "@/components/WaveSeparator.astro"
+import { lolalolitalandGeoJSON, potaBlavaGeoJSON } from "@/consts/geoJSONData.ts"
+import { Image } from "astro:assets"
+---
+
+<WaveSeparator bottomColor="var(--color-theme-blue)" />
+
+<section id="mapa" class="bg-theme-blue relative py-12 pb-24">
+  <BubbleBackground />
+  <h2
+    class="mx-auto flex flex-row items-center justify-center gap-x-4 py-4 text-left text-lg font-semibold tracking-tight text-balance text-white md:gap-x-8 md:py-6 md:text-2xl lg:py-8 lg:pb-4 lg:text-3xl xl:text-4xl"
+  >
+    ¡Nos vemos aquí!
+  </h2>
+  <h3 class="flex flex-col items-center justify-center gap-1.5 text-white md:flex-row">
+    Lola Lolita Land se celebra en <a
+      href="https://maps.app.goo.gl/QEWvh6e1cAZoqhCS7"
+      target="_blank"
+      rel="noopener"
+      class="hover:text-primary animate-ease-in-out inline-block max-w-full rounded-lg bg-pink-200 px-2 py-1 text-center break-words text-pink-950 transition hover:bg-white"
+      >Aquopolis Villanueva de la Cañada</a
+    >
+  </h3>
+
+  <div class="m-auto flex max-w-[1315px] flex-row flex-wrap gap-8 p-4">
+    <div class="relative h-[630px] min-w-[300px] flex-1 overflow-hidden rounded-[2rem] bg-black">
+      <LeafletMap
+        latitude={40.45673263671421}
+        longitude={-3.990346247363024}
+        zoom={16}
+        tileLayer="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
+        attribution=`<a class="mr-5" href="http://www.openstreetmap.org/">OpenStreetMap</a>`
+        geoJSON={[
+          { data: lolalolitalandGeoJSON, color: "var(--color-primary)" },
+          { data: potaBlavaGeoJSON, color: "green" },
+        ]}
+      />
+    </div>
+    <div
+      class="image w-full flex-shrink-0 overflow-hidden rounded-[2rem] md:w-[250px] lg:w-[400px] xl:w-[500px]"
+    >
+      <div class="water hidden lg:block" title="Lola Lolita Land - ZIG ZAG tobogan"></div>
+      <Image
+        class="h-full w-full object-cover lg:hidden"
+        src={MapImage}
+        width={900}
+        height={900}
+        alt={"Lola Lolita Land - ZIG ZAG tobogan"}
+      />
+
+      <svg>
+        <defs>
+          <filter id="turbulence" x="0" y="0" width="100%" height="100%">
+            <feTurbulence
+              id="sea-filter"
+              type="fractalNoise"
+              numOctaves="3"
+              seed="2"
+              baseFrequency="0.01 0.5"></feTurbulence>
+            <feDisplacementMap scale="20" in="SourceGraphic"></feDisplacementMap>
+            <animate
+              xlink:href="#sea-filter"
+              attributeName="baseFrequency"
+              dur="60s"
+              keyTimes="0;0.5;1"
+              values="0.01 0.03;0.04 0.06;0.02 0.06"
+              repeatCount="indefinite"></animate>
+          </filter>
+        </defs>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<style>
+  .image {
+    position: relative;
+    background-image: url("./images/map_image.webp");
+    background-size: cover;
+  }
+
+  .water {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-image: url("./images/map_image_mask.webp");
+    background-size: cover;
+    filter: url(#turbulence);
+  }
+</style>

@@ -1,0 +1,114 @@
+---
+import Instagram from "../../public/icons/instagram.svg"
+import TikTok from "../../public/icons/tiktok.svg"
+---
+
+<footer
+  class="footer footer-horizontal footer-center text-primary-content flex flex-col items-center justify-center p-10 text-center"
+>
+  <aside class="flex flex-col items-center">
+    <div
+      class="logo lazy_background_image_maskImage lazy_background_image relative size-28 lg:size-32"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="4.71132 2 10.58 15"
+        role="img"
+        aria-labelledby="logoTitle"
+      >
+        <title id="logoTitle">Lola Lolita Land</title>
+        <path
+          d="M 5 2 L 15 2 C 16 3 14 4 15 5 C 16 6 14 7 15 8 C 16 9 14 10 15 11 C 16 12 14 13 15 14 C 16 15 14 16 15 17 L 5 17 C 4 16 6 15 5 14 C 4 13 6 12 5 11 C 4 10 6 9 5 8 C 4 7 6 6 5 5 C 4 4 6 3 5 2"
+          fill="#383acf"></path>
+      </svg>
+    </div>
+
+    <nav class="mt-6">
+      <div class="grid grid-flow-col gap-4">
+        <a
+          class="transition hover:scale-110"
+          href="https://www.instagram.com/lolalolita/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Visitar perfil de Instagram de Lola Lolita"
+        >
+          <span class="sr-only">Instagram de Lola Lolita</span>
+          <Instagram name="instagram" class="size-6 fill-white md:size-8" aria-hidden="true" />
+        </a>
+        <a
+          class="transition hover:scale-110"
+          href="https://www.tiktok.com/@lolalolita"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Visitar perfil de TikTok de Lola Lolita"
+        >
+          <span class="sr-only">TikTok de Lola Lolita</span>
+          <TikTok name="tiktok" class="size-6 fill-white md:size-8" aria-hidden="true" />
+        </a>
+      </div>
+    </nav>
+
+    <div class="mt-8 flex flex-wrap justify-center gap-4">
+      <a
+        class="text-xs text-white/80 transition hover:text-white"
+        href="https://villanueva.aquopolis.es/condiciones-de-contratacion"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Condiciones de contratación
+      </a>
+      <a
+        class="text-xs text-white/80 transition hover:text-white"
+        href="https://villanueva.aquopolis.es/normas-de-funcionamiento"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Normas de funcionamiento
+      </a>
+    </div>
+
+    <p class="mt-6 text-xs text-pretty text-white/90">
+      Copyright © {new Date().getFullYear()} - Todos los derechos reservados
+    </p>
+  </aside>
+</footer>
+
+<style>
+  .logo {
+    -webkit-mask-image: url("./favicon.svg");
+    mask-image: url("./favicon.svg");
+    -webkit-mask-size: cover;
+    mask-size: cover;
+    background-color: rgb(243, 243, 243);
+    position: relative;
+    overflow: hidden;
+  }
+  .lazy_background_image_maskImage {
+    -webkit-mask-size: cover;
+    mask-size: cover;
+    -webkit-mask-image: url("./favicon.svg");
+    mask-image: url("./favicon.svg");
+  }
+  .lazy_background_image {
+    transition: 1s cubic-bezier(0.6, 0.6, 0, 1) opacity;
+  }
+  .logo svg {
+    width: 200px;
+    height: 300px;
+    position: absolute;
+    top: 10px;
+    left: 0;
+    animation: 8s linear infinite;
+    transform: translate(-300px, -70px) rotate(20deg);
+    animation-name: logo_animation !important;
+  }
+
+  @keyframes logo_animation {
+    0% {
+      transform: translate(-300px, -70px) rotate(20deg);
+    }
+    100% {
+      transform: translate(600px, -70px) rotate(20deg);
+    }
+  }
+</style>

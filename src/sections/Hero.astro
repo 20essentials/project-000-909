@@ -1,0 +1,343 @@
+---
+import DotBackground from "../components/DotBackground.astro"
+---
+
+<section class='relative pb-12'>
+  <DotBackground />
+  <div
+    class='bg-theme-blue-light relative mx-auto mb-16 h-screen w-full md:aspect-video md:h-full md:object-cover'
+  >
+    <div
+      title='Logo de Lola Lolita Land'
+      class='absolute top-20 right-0 left-0 z-50 mx-auto flex justify-center md:top-0 lg:top-14'
+    >
+      <div
+        class='logo lazy_background_image_maskImage lazy_background_image relative size-56 md:size-44 lg:size-56'
+      >
+        <svg viewBox='4.71132 2 12.58 15'>
+          <path
+            d='M 5 2 L 17 2 C 18 3 16 4 17 5 C 18 6 16 7 17 8 C 18 9 16 10 17 11 C 18 12 16 13 17 14 C 18 15 16 16 17 17 L 5 17 C 4 16 6 15 5 14 C 4 13 6 12 5 11 C 4 10 6 9 5 8 C 4 7 6 6 5 5 C 4 4 6 3 5 2'
+            fill='#ff0695'></path>
+        </svg>
+      </div>
+    </div>
+
+    <div
+      class='image relative'
+      title='Fotografía de una joven recostada, que es Lola Lolita, sobre la arena con una cola de sirena azul, frente a una piscina con toboganes rosas en un entorno tropical, con el texto ‘Lola Lolita Land’ en la parte superior.'
+    >
+      <!-- Date and location temporarily hidden
+      <div class="date-location-container">
+        <div class="date">14-15 DE JUNIO</div>
+        <div class="location">Aquopolis de Madrid</div>
+      </div>
+      -->
+      <div class='water'></div>
+
+      <svg>
+        <defs>
+          <filter id='turbulence' x='0' y='0' width='100%' height='100%'>
+            <feTurbulence
+              id='sea-filter'
+              type='fractalNoise'
+              numOctaves='3'
+              seed='2'
+              baseFrequency='0.01 0.04'></feTurbulence>
+            <feDisplacementMap scale='10' in='SourceGraphic'></feDisplacementMap>
+            <animate
+              xlink:href='#sea-filter'
+              attributeName='baseFrequency'
+              dur='60s'
+              keyTimes='0;0.5;1'
+              values='0.02 0.03;0.04 0.06;0.02 0.06'
+              repeatCount='indefinite'></animate>
+          </filter>
+        </defs>
+      </svg>
+    </div>
+    <div class='absolute inset-0 bg-gradient-to-b from-transparent from-85% to-[#ff0695]'></div>
+    <div class='absolute z-20 w-full' id='header-waves'>
+      <svg
+        class='waves'
+        xmlns:xlink='http://www.w3.org/1999/xlink'
+        viewBox='0 24 150 28 '
+        preserveAspectRatio='none'
+      >
+        <defs>
+          <path
+            id='wave-path'
+            d='M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z'
+          >
+          </path>
+        </defs>
+        <g class='wave4'>
+          <use xlink:href='#wave-path' x='50' y='0' class='fill-[#383acf] opacity-30'></use>
+        </g>
+        <g class='wave1'>
+          <use xlink:href='#wave-path' x='50' y='3' class='fill-[#ff0695] opacity-50'></use>
+        </g>
+        <g class='wave2'>
+          <use xlink:href='#wave-path' x='50' y='6' class='fill-[#ff0695] opacity-70'></use>
+        </g>
+        <g class='wave3'>
+          <use xlink:href='#wave-path' x='50' y='9' class='fill-[#ff0695] opacity-50'></use>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <style>
+    .date-location-container {
+      position: absolute;
+      bottom: 12%;
+      left: 0;
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      text-align: center;
+    }
+
+    .date {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 900;
+      font-size: clamp(1.4rem, 4vw, 3rem);
+      color: #ff0695;
+      text-shadow:
+        2px 2px 0 rgba(0, 0, 0, 0.3),
+        0 0 8px rgba(0, 0, 0, 0.2);
+      letter-spacing: 1px;
+      margin-bottom: 0.1rem;
+      line-height: 1;
+    }
+
+    .location {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 700;
+      font-size: clamp(0.8rem, 2vw, 1.5rem);
+      color: #ff6bc5;
+      text-shadow:
+        1px 1px 0 rgba(0, 0, 0, 0.3),
+        0 0 6px rgba(0, 0, 0, 0.2);
+      letter-spacing: 0.5px;
+    }
+
+    .image {
+      background-image: url("./images/hero.webp");
+      height: 100%;
+      width: 100%;
+      background-size: cover;
+      z-index: 20;
+    }
+
+    .water {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("./images/mask_hero.webp");
+      background-size: cover;
+      filter: url("#turbulence");
+    }
+
+    @media (max-width: 640px) and (orientation: portrait) {
+      .image {
+        background-image: url("./images/hero_sm_portrait.webp");
+      }
+      .water {
+        background-image: url("./images/mask_hero_sm_portrait.webp");
+      }
+    }
+
+    .logo {
+      -webkit-mask-image: url("./favicon.svg");
+      mask-image: url("./favicon.svg");
+      -webkit-mask-size: cover;
+      mask-size: cover;
+      background-color: rgb(243, 243, 243);
+      position: relative;
+      overflow: hidden;
+    }
+    .lazy_background_image_maskImage {
+      -webkit-mask-size: cover;
+      mask-size: cover;
+      -webkit-mask-image: url("./favicon.svg");
+      mask-image: url("./favicon.svg");
+    }
+    .lazy_background_image {
+      transition: 1s cubic-bezier(0.6, 0.6, 0, 1) opacity;
+    }
+    .logo svg {
+      width: 250px;
+      height: 300px;
+      position: absolute;
+      top: 30px;
+      left: 0;
+      animation: 8s linear infinite;
+      transform: translate(-300px, -70px) rotate(20deg);
+      animation-name: logo_animation !important;
+    }
+
+    @keyframes logo_animation {
+      0% {
+        transform: translate(-300px, -70px) rotate(20deg);
+      }
+      100% {
+        transform: translate(600px, -70px) rotate(20deg);
+      }
+    }
+
+    .waves {
+      height: 80px;
+      width: 100%;
+      margin-top: -70px;
+    }
+
+    .wave1 use {
+      animation: move-forever1 10s linear infinite;
+      animation-delay: -2s;
+    }
+
+    .wave2 use {
+      animation: move-forever2 8s linear infinite;
+      animation-delay: -2s;
+    }
+
+    .wave3 use {
+      animation: move-forever3 6s linear infinite;
+      animation-delay: -2s;
+    }
+
+    .wave4 use {
+      animation: move-forever3 4s linear infinite;
+      animation-delay: -2s;
+    }
+
+    @-webkit-keyframes move-forever1 {
+      0% {
+        transform: translate(85px, 0%);
+      }
+
+      100% {
+        transform: translate(-90px, 0%);
+      }
+    }
+
+    @keyframes move-forever1 {
+      0% {
+        transform: translate(85px, 0%);
+      }
+
+      100% {
+        transform: translate(-90px, 0%);
+      }
+    }
+
+    @-webkit-keyframes move-forever2 {
+      0% {
+        transform: translate(-90px, 0%);
+      }
+
+      100% {
+        transform: translate(85px, 0%);
+      }
+    }
+
+    @keyframes move-forever2 {
+      0% {
+        transform: translate(-90px, 0%);
+      }
+
+      100% {
+        transform: translate(85px, 0%);
+      }
+    }
+
+    @-webkit-keyframes move-forever3 {
+      0% {
+        transform: translate(-90px, 0%);
+      }
+
+      100% {
+        transform: translate(85px, 0%);
+      }
+    }
+
+    @keyframes move-forever3 {
+      0% {
+        transform: translate(-90px, 0%);
+      }
+
+      100% {
+        transform: translate(85px, 0%);
+      }
+    }
+
+    @-webkit-keyframes move-forever4 {
+      0% {
+        transform: translate(-90px, 0%);
+      }
+
+      100% {
+        transform: translate(85px, 0%);
+      }
+    }
+
+    @keyframes move-forever4 {
+      0% {
+        transform: translate(-90px, 0%);
+      }
+
+      100% {
+        transform: translate(85px, 0%);
+      }
+    }
+
+    .waves > use {
+      animation: wave 25s cubic-bezier(0.5, 0.5, 0.45, 0.5) infinite;
+    }
+
+    @keyframes wave {
+      0% {
+        transform: translate3d(-90px, 0, 0);
+      }
+      100% {
+        transform: translate3d(85px, 0, 0);
+      }
+    }
+
+    @keyframes background-pan {
+      from {
+        background-position: 0% center;
+      }
+
+      to {
+        background-position: -200% center;
+      }
+    }
+
+    @keyframes scale {
+      from,
+      to {
+        transform: scale(0);
+      }
+
+      50% {
+        transform: scale(1);
+      }
+    }
+
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(180deg);
+      }
+    }
+  </style>
+</section>
